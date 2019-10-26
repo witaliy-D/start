@@ -1,0 +1,43 @@
+{
+  "name": "gulp4",
+  "version": "1.0.0",
+  "description": "Project",
+  "author": "Witaliy Duplin",
+  "license": "ISC",
+  "main": "src/js/app.js",
+  "devDependencies": {
+    "@lipemat/css-mqpacker": "^8.0.1",
+    "browser-sync": "^2.26.7",
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-cache": "^1.1.2",
+    "gulp-cheerio": "^0.6.3",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-copy": "^4.0.1",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-responsive": "2.14.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-svgmin": "^2.2.0",
+    "gulp-svgstore": "^7.0.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp.spritesmith": "^6.10.1",
+    "imagemin-pngquant": "^8.0.0",
+    "merge-stream": "^2.0.0",
+    "panini": "^1.6.3",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "slick-carousel": "^1.8.1"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "start": "npm run build && gulp serve"
+  }
+}
