@@ -1,9 +1,6 @@
-//= libs/slick.js
 
-
-//= components/modal.js
-//= components/tab.js
-//= components/slick-slider.js
+//=require ../../node_modules/slick-carousel/slick/slick.js
+//=require components/slick-slider.js
 
 
 

@@ -1,5 +1,5 @@
 .header {
-
+  //
 }
 
 .img-block {
@@ -9,16 +9,16 @@
 
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     top: 25px;
-    left: 15px;
+    left: 16px;
+
     @include sprite($quotes);
   }
 }
 
 //quotes- название картинки
 
-
-@media  ($mobile-widths-only) {
-
+@media ($mobile-widths-only) {
+  //
 }

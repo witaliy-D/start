@@ -1,15 +1,16 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+
 @import "vendor/bootstrap";
 @import "vendor/slick";
 
-@import "variables";
-@import "mixins";
+@import "base/scaffolding";
+@import "base/fonts";
+@import "base/sprite";
 
-@import "sprite";
-
-@import "fonts";
-
-@import "blocks/scaffolding";
 @import "blocks/header";
-
 @import "blocks/slider";
 @import "blocks/footer";
+
+
+

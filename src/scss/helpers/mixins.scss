@@ -1,6 +1,6 @@
 @mixin clearfix() {
   &::after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -14,22 +14,20 @@
 
 @mixin btn() {
   display: inline-block;
-  padding: 18px 42px;
   font-family: $font-family;
-  font-weight: 600;
   font-size: 17px;
   line-height: 25px;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  text-decoration: none;
-  vertical-align: top;
+  font-weight: 600;
+  padding: 18px 42px;
   text-align: center;
+  vertical-align: top;
+  text-decoration: none;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
   color: $name-345477;
   background-color: $name-9addfc;
-  border-radius: 3px;
   border: none;
-  cursor: pointer;
+  border-radius: 3px;
   outline: none;
+  cursor: pointer;
 }
-
-
