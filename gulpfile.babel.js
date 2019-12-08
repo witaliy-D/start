@@ -5,7 +5,7 @@ require('require-dir')('./tasks');
 
 
 
-gulp.task('images', gulp.series('cleanImgs', gulp.parallel('imgs', 'symbols', 'sprite')), done => {
+gulp.task('images', gulp.series('cleanImgs', gulp.parallel('imgs', 'symbols', 'sprite', 'favicons')), done => {
 	server.reload();
 	done();
 });
