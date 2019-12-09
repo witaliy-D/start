@@ -11,18 +11,15 @@ const production = !!argv.production;
 
 gulp.task('html', () => {
 	panini.refresh();
-	return gulp
-		.src('src/*.html')
+	return gulp.src('src/*.html')
 		.pipe(plumber())
-		.pipe(
-			panini({
-				root: 'src/',
-				layouts: 'src/tpl/layouts/',
-				partials: 'src/tpl/partials/',
-				helpers: 'src/tpl/helpers/',
-				data: 'src/tpl/data/'
-			})
-		)
+		.pipe(panini({
+			root: 'src/',
+			layouts: 'src/tpl/layouts/',
+			partials: 'src/tpl/partials/',
+			helpers: 'src/tpl/helpers/',
+			data: 'src/tpl/data/'
+		}))
 		.pipe(gulpif(production, replace('.css', '.min.css')))
 		.pipe(gulpif(production, replace('.js', '.min.js')))
 		.pipe(gulp.dest('dist'))

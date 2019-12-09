@@ -60,8 +60,7 @@
     "svg4everybody": "^2.1.9"
   },
   "scripts": {
-    "build": "gulp build",
-    "start": "npm run build && gulp serve",
+    "start": "gulp start",
     "prod": "gulp prod --production",
     "lint": "stylelint src/scss/**/*.scss --fix --config .stylelintrc-format",
     "clear": "gulp cacheClear"

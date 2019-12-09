@@ -50,7 +50,6 @@ gulp.task('scss', () => {
 		})))
 		.pipe(gulpif(production, rename({suffix: '.min'})))
 		.pipe(gulpif(!production, sourcemaps.write('.')))
-
 		.pipe(gulp.dest('dist/css'))
 		.pipe(debug({title: 'scss'}))
 		.pipe(server.stream());

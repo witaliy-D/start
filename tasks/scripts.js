@@ -14,8 +14,7 @@ const argv = yargs.argv;
 const production = !!argv.production;
 
 gulp.task('scripts', () => {
-	return gulp
-		.src('src/js/*.js')
+	return gulp.src('src/js/*.js')
 		.pipe(plumber())
 		.pipe(gulpif(!production, sourcemaps.init()))
 		.pipe(include())

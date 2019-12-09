@@ -5,8 +5,7 @@ import spritesmith from 'gulp.spritesmith';
 import merge from 'merge-stream';
 
 gulp.task('sprite', () => {
-	const spriteData = gulp
-		.src('src/img/sprite/*')
+	const spriteData = gulp.src('src/img/sprite/*')
 		.pipe(imagemin([imagemin.jpegtran({progressive: true}), pngquant()]))
 		.pipe(
 			spritesmith({
@@ -16,7 +15,9 @@ gulp.task('sprite', () => {
 				padding: 1
 			})
 		);
-	const imgStream = spriteData.img.pipe(gulp.dest('dist/img'));
-	const cssStream = spriteData.css.pipe(gulp.dest('src/scss/base'));
+	const imgStream = spriteData.img
+		.pipe(gulp.dest('dist/img'));
+	const cssStream = spriteData.css
+		.pipe(gulp.dest('src/scss/base'));
 	return merge(imgStream, cssStream);
 });
