@@ -6,6 +6,9 @@ import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import postcss from 'gulp-postcss';
+import objectFitImages from 'postcss-object-fit-images';
+import inlineSVG from 'postcss-inline-svg';
+import atImport from 'postcss-import';
 import mqpacker from '@lipemat/css-mqpacker';
 import cleancss from 'gulp-clean-css';
 import rename from 'gulp-rename';
@@ -15,6 +18,35 @@ import yargs from 'yargs';
 
 const argv = yargs.argv;
 const production = !!argv.production;
+
+const cleancssOption = {
+	level: {
+		1: {
+			specialComments: 0,
+			removeEmpty: true,
+			removeWhitespace: true
+		},
+		2: {
+			mergeMedia: true,
+			removeEmpty: true,
+			removeDuplicateFontRules: true,
+			removeDuplicateMediaBlocks: true,
+			removeDuplicateRules: true,
+			removeUnusedAtRules: false
+		}
+	}
+};
+
+//Список и настройки плагинов postCSS
+const postCssPlugins = [
+	mqpacker({
+		sort: true
+	}),
+	atImport(),
+	inlineSVG(),
+	objectFitImages()
+];
+
 
 gulp.task('scss', () => {
 	const onError = function (err) {
@@ -30,24 +62,8 @@ gulp.task('scss', () => {
 		.pipe(gulpif(!production, sourcemaps.init()))
 		.pipe(sass({outputStyle: 'expanded'}))
 		.pipe(autoprefixer({grid: true}))
-		.pipe(postcss([mqpacker({sort: true})]))
-		.pipe(gulpif(production, cleancss({
-			level: {
-				1: {
-					specialComments: 0,
-					removeEmpty: true,
-					removeWhitespace: true
-				},
-				2: {
-					mergeMedia: true,
-					removeEmpty: true,
-					removeDuplicateFontRules: true,
-					removeDuplicateMediaBlocks: true,
-					removeDuplicateRules: true,
-					removeUnusedAtRules: false
-				}
-			}
-		})))
+		.pipe(postcss(postCssPlugins))
+		.pipe(gulpif(production, cleancss(cleancssOption)))
 		.pipe(gulpif(production, rename({suffix: '.min'})))
 		.pipe(gulpif(!production, sourcemaps.write('.')))
 		.pipe(gulp.dest('dist/css'))
