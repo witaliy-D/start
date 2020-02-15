@@ -1,3 +1,5 @@
+// stylelint-disable plugin/selector-bem-pattern
+
 body {
   font-family: $font-family;
   font-size: 22px;
@@ -18,7 +20,7 @@ h1 {
   font-family: $font-family;
   font-size: 36px;
   line-height: 43px;
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -27,7 +29,7 @@ h2 {
   font-family: $font-family;
   font-size: 32px;
   line-height: 43px;
-  font-weight: normal;
+  font-weight: 400;
   margin: 0 auto;
   text-align: center;
   color: $name-315479;
