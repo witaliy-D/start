@@ -4,7 +4,7 @@ import plumber from 'gulp-plumber';
 import gulpif from 'gulp-if';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
-import autoprefixer from 'gulp-autoprefixer';
+import autoprefixer from 'autoprefixer';
 import postcss from 'gulp-postcss';
 import objectFitImages from 'postcss-object-fit-images';
 import inlineSVG from 'postcss-inline-svg';
@@ -37,8 +37,9 @@ const cleancssOption = {
 	}
 };
 
-//Список и настройки плагинов postCSS
+// Список и настройки плагинов postCSS
 const postCssPlugins = [
+	autoprefixer({grid: true}),
 	mqpacker({
 		sort: true
 	}),
@@ -61,12 +62,11 @@ gulp.task('scss', () => {
 		.pipe(plumber({errorHandler: onError}))
 		.pipe(gulpif(!production, sourcemaps.init()))
 		.pipe(sass({outputStyle: 'expanded'}))
-		.pipe(autoprefixer({grid: true}))
 		.pipe(postcss(postCssPlugins))
 		.pipe(gulpif(production, cleancss(cleancssOption)))
 		.pipe(gulpif(production, rename({suffix: '.min'})))
 		.pipe(gulpif(!production, sourcemaps.write('.')))
-		.pipe(gulp.dest('dist/css'))
 		.pipe(debug({title: 'scss'}))
+		.pipe(gulp.dest('dist/css'))
 		.pipe(server.stream());
 });

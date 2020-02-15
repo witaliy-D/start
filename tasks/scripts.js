@@ -8,7 +8,7 @@ import babel from 'gulp-babel';
 import terser from 'gulp-terser';
 import debug from 'gulp-debug';
 import yargs from 'yargs';
-import server from 'browser-sync';
+
 
 const argv = yargs.argv;
 const production = !!argv.production;
@@ -23,6 +23,5 @@ gulp.task('scripts', () => {
 		.pipe(gulpif(production, terser()))
 		.pipe(gulpif(production, rename({suffix: '.min'})))
 		.pipe(gulp.dest('dist/js'))
-		.pipe(debug({title: 'JS '}))
-		.pipe(server.stream());
+		.pipe(debug({title: 'JS'}));
 });
